@@ -19,9 +19,13 @@ As of now, the initial plan is to implement the app using basic Python libraries
 
 ### Project Schedule
 **Week 1:** Write out project in pseudo code and map out code structure by identifying key functions 
+
 **Week 2:** Implement basic task management (adding tasks, setting due dates, and calculating urgency) 
+
 **Week 3:** Implement and test optimization features (smart prioritization and context reminder features) 
+
 **Week 4:** Build user interface 
+
 **Week 5:** Revisions and stretch goals 
 
 ### Collaboration Plan
