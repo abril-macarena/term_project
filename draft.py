@@ -26,7 +26,7 @@ END
 task_list = []
 
 def display_menu():
-    print("Task Management and Automation Assistant")
+    print("Automated Task Management Assistant")
     print("1. Add a new task")
     print("2. View tasks")
     print("3. Edit a task")
@@ -249,7 +249,7 @@ def main():
     while True:
         display_menu()
         try:
-            choice = int(input("Select an option: "))
+            choice = int(input("Select an option (e.g. 1-5): "))
         except ValueError:
             print("Invalid input.")
             continue
