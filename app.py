@@ -13,6 +13,7 @@ def home():
 #VIEW TASKS
 @app.route("/tasks")
 def view_tasks():
+    cleanup_expired_tasks()
     #sorts tasks by due date
     sorted_tasks = sorted(task_list, key=lambda t: t["due_date"])
     return render_template("tasks.html", tasks=sorted_tasks)
@@ -58,9 +59,16 @@ def edit_task(task_id):
 
     return render_template("edit_task.html", task=task, task_id=task_id)
 
+#REMOVES 'EXPIRED' TASKS
+def cleanup_expired_tasks():
+    current_date = datetime.date.today()
+    global task_list
+    task_list = [task for task in task_list if task["due_date"] >= current_date]
+
 #SENDING REMINDERS
 @app.route("/reminders")
 def send_reminders():
+    cleanup_expired_tasks()
     current_date = datetime.date.today()
     current_hour = datetime.datetime.now().hour
     reminders = []
@@ -75,11 +83,11 @@ def send_reminders():
 
 #HELPER FUNCTION - checking reminder time
 def check_reminder_time(task_type, current_hour):
-    if task_type == "Work":
+    if task_type == "work":
         return 9 <= current_hour <= 17
-    elif task_type == "Personal":
+    elif task_type == "personal":
         return 18 <= current_hour <= 22
-    elif task_type == "Exercise":
+    elif task_type == "exercise":
         return (6 <= current_hour <= 8) or (18 <= current_hour <= 20)
     return True
 
