@@ -267,3 +267,6 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+
+
+### this python code serves as a strating point for python -- this structure will be used and broken up across python and html

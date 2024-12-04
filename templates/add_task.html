@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add a Task</h2>
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+<form method="POST">
+    Title: <input type="text" name="title" required><br>
+    Due Date (YYYY-MM-DD): <input type="date" name="due_date" required><br>
+    Importance (1-5): <input type="number" name="importance" min="1" max="5" required><br>
+    Type(e.g. work, personal, or exercise): <select name="type" required>
+        <option value="work">Work</option>
+        <option value="personal">Personal</option>
+        <option value="exercise">Exercise</option>
+    </select><br>
+    <button type="submit">Add Task</button>
+</form>
+{% endblock %}
